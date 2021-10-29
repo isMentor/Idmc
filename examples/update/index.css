@@ -1,0 +1,61 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+}
+.app {
+  display: flex;
+  height: 100vh;
+}
+.table-g {
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+
+.table {
+  /* flex: 1; */
+
+  /* width: 60%;
+  margin: 10% auto; */
+}
+
+.form-g {
+  flex: 1;
+  background: #2f2f33;
+  color: #999;
+  padding: 20px;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.form-age-sex {
+  display: flex;
+
+}
+
+.input-sex {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.input-sex .form-check {
+  margin-right: 20px;
+}
+
+.input-btn {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+
+
+}
+
+.input-btn button {
+  margin-left: 10px;
+}

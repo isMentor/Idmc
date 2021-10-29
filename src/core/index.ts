@@ -5,6 +5,7 @@
  */
 import { TAG, assert } from '../helpers/util'
 import query from './query'
+import update from './update'
 
 interface Assignment {
   sources?: Boolean
@@ -38,6 +39,10 @@ class Core {
     this.assignment(newData)
   }
 
+  /**
+   * @description: 删除数据
+   * @param {any} key
+   */  
   public remove(key: any): void {
     const dataSources = [ ...this.dataSources ]
     const ass = assert(key)
@@ -47,7 +52,17 @@ class Core {
     this.assignment(data)
   }
 
-  public update(): void {}
+  /**
+   * @description: 
+   * @param {any} target
+   * @param {any} data
+   * @return {*}
+   */  
+  public update(target: any, data: any): void {
+    
+    const dataSources: Array<any> = update(this.dataSources, target, data)
+    this.assignment(dataSources)
+  }
 
   /**
    * @description: 查询

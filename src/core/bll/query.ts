@@ -5,13 +5,11 @@
  */
 
 export default (dataSources: Array<any>, target: Object) => {
-
   const disTarget = screenTarget(target)
   const resolve = resolveData(dataSources, disTarget)
 
   const sources = resolve.filter(<T>(item: T) => !!item)
   return sources
-
 }
 
 /**
@@ -19,16 +17,12 @@ export default (dataSources: Array<any>, target: Object) => {
  * @param {Object} target
  */
 const screenTarget = <T>(target: T): T => {
-  let targets:T = { ...target }
+  let targets: T = { ...target }
   for (const key in target) {
-
     if (Object.prototype.hasOwnProperty.call(target, key)) {
-
       const value: any = target[key]
       if (['', null, undefined].includes(value)) delete targets[key]
-      
     }
-    
   }
   return targets
 }
@@ -55,10 +49,10 @@ const resolveData = (dataSources: Array<any>, target: Object): Array<any> => {
  */
 const assert = (item: Array<any>, target: any): Array<Boolean> => {
   const targetKeys = Object.keys(target)
-  let fact:Array<Boolean> = []
-  targetKeys.map((name:any) => {
-    const is = `${item[name]}` ===`${target[name]}`
-  fact.push(is)
+  let fact: Array<Boolean> = []
+  targetKeys.map((name: any) => {
+    const is = `${item[name]}` === `${target[name]}`
+    fact.push(is)
   })
 
   return fact

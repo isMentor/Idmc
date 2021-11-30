@@ -1,3 +1,8 @@
+/*
+ * @Author: tiw
+ * @LastEditors: 
+ * @Description: 
+ */
 
 import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
@@ -8,7 +13,7 @@ import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
 
-const libraryName = 'index'
+const libraryName = 'idmc'
 
 export default {
   input: `src/index.ts`,

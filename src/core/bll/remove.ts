@@ -5,8 +5,8 @@
  */
 
 import { KEY_NAME } from '../../global/default'
-import { Intruder, Assignment, AssertParam, CoreParam } from '../../types'
-import { TAG, assert, headingCodeOne } from '../../helpers/util'
+import { Intruder, AssertParam } from '../../types'
+import { assert } from '../../helpers/util'
 export default (key: any, dataSources: Array<Intruder>): Array<Intruder> => {
   const ass: Boolean | AssertParam = assert(key)
 

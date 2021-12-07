@@ -1,6 +1,6 @@
 /*
  * @Author: tiw
- * @LastEditors: 
+ * @LastEditors: Please set LastEditors
  * @Description: 
  */
 
@@ -12,7 +12,6 @@ import typescript from 'rollup-plugin-typescript2'
 import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
-
 const libraryName = 'idmc'
 
 export default {

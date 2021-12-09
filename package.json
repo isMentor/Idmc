@@ -1,6 +1,6 @@
 {
   "name": "idmc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "keywords": [],
   "main": "dist/idmc.umd.js",
@@ -33,7 +33,7 @@
     "travis-deploy-once": "travis-deploy-once",
     "prepub": "npm run test:prod && npm run build",
     "pub": "sh release.sh"
-},
+  },
   "lint-staged": {
     "{src,test}/**/*.ts": [
       "prettier --write",

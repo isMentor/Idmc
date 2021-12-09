@@ -4,7 +4,6 @@
  * @Description: 测试查找
  */
 import Idmc from '../../src/index'
-import { TAG } from '../../src/helpers/util'
 describe('Test Find => 0.0.1', () => {
   const data = [
     { name: '张三', age: 18, sex: 1, adder: '上海' },
@@ -16,10 +15,32 @@ describe('Test Find => 0.0.1', () => {
     { name: '四爷', age: 33, sex: 1, adder: '北京' },
     { name: '乌芳', age: 21, sex: 0, adder: '咸阳' }
   ]
+  const data2 = [
+    { name: '张三', age: null, sex: 1, adder: '上海' },
+    { name: '李四', age: 28, sex: 1, adder: '长沙' },
+    { name: '如花', age: 18, sex: 0, adder: '四川' },
+    { name: '王麻子', age: 18, sex: 1, adder: '四川' },
+    { name: '二溜子', age: null, sex: 1, adder: '湖北' },
+    { name: '九头鸟', age: 58, sex: 1, adder: '黄岗' },
+    { name: '四爷', age: 33, sex: null, adder: '北京' },
+    { name: '乌芳', age: 21, sex: 0 }
+  ]
   test('Query 多条 => ', () => {
     const idmc = new Idmc(data)
-    idmc.find({ name: '张三' })
+    idmc.find({ name: '张三', age: null })
     expect(idmc.product).toEqual([data[0]])
+  })
+
+  test('Query 多条 => ', () => {
+    const idmc = new Idmc(data2)
+    idmc.find({ name: '张三' })
+    expect(idmc.product).toEqual([data2[0]])
+  })
+
+  test('Query 多条 => ', () => {
+    const idmc = new Idmc(data)
+    idmc.find({})
+    expect(idmc.product).toEqual(data)
   })
 
   test('Query 多条 => ', () => {

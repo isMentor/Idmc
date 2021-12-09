@@ -10,7 +10,7 @@
     "dist"
   ],
   "author": "15026864008@163.com",
-  "repository": "https://github.com/isMentor/Idmc.git",
+  "repository": "",
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"
@@ -33,7 +33,7 @@
     "travis-deploy-once": "travis-deploy-once",
     "prepub": "npm run test:prod && npm run build",
     "pub": "sh release.sh"
-  },
+},
   "lint-staged": {
     "{src,test}/**/*.ts": [
       "prettier --write",

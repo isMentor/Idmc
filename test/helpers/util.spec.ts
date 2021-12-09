@@ -3,7 +3,7 @@
  * @LastEditors: Please set LastEditors
  * @Description:
  */
-import { TAG, headingCode, assert } from '../../src/helpers/util'
+import { TAG, headingCode, assert, headingCodeOne } from '../../src/helpers/util'
 
 describe('Test Util File => 0.0.1', () => {
   test('Test is for true', () => {
@@ -17,6 +17,10 @@ describe('Test Util File => 0.0.1', () => {
 
   test('初始化识别码 ID ', () => {
     expect(headingCode([])).toBeTruthy()
+  })
+
+  test('初始化识别码 ID ', () => {
+    expect(headingCodeOne({})).toBeTruthy()
   })
 
   describe('断言数据类型 =>', () => {

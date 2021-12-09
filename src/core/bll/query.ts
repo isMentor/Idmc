@@ -19,9 +19,13 @@ export default (dataSources: Array<any>, target: Object) => {
 const screenTarget = <T>(target: T): T => {
   let targets: T = { ...target }
   for (const key in target) {
-    if (Object.prototype.hasOwnProperty.call(target, key)) {
+    const hasOwnProperty = Object.prototype.hasOwnProperty.call(target, key)
+    if (hasOwnProperty) {
       const value: any = target[key]
-      if (['', null, undefined].includes(value)) delete targets[key]
+      const targetAssert = ['', null, undefined].includes(value)
+      targetAssert && delete targets[key]
+    } else {
+      return targets
     }
   }
   return targets

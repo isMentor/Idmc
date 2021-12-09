@@ -23,9 +23,9 @@ export const TAG = (index?: Number | String): String =>
  */
 export const headingCode = (dataSource: Array<any>, param: CoreParam = {}): Array<any> => {
   return dataSource.map((item: any, i: Number) => {
-    if (!item[KEY_NAME]) {
-      item[KEY_NAME] = item[`${param.keyTarget}`] || item.id || item.key || TAG(i)
-    }
+    !item[KEY_NAME] &&
+      (item[KEY_NAME] = item[`${param.keyTarget}`] || item.id || item.key || TAG(i))
+
     return item
   })
 }
@@ -37,7 +37,7 @@ export const headingCode = (dataSource: Array<any>, param: CoreParam = {}): Arra
  */
 export const headingCodeOne = (source: Intruder): Intruder => {
   const updateData = { ...source }
-  if (!updateData[KEY_NAME]) updateData[KEY_NAME] = source.id || source.key
+  !updateData[KEY_NAME] && (updateData[KEY_NAME] = source.id || source.key)
   return updateData
 }
 

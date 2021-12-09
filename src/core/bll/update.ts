@@ -14,9 +14,8 @@ export default (
   const sources = dataSources.find((item: any) => item.__key__ === target.__key__)
 
   for (const key in sources) {
-    if (Object.prototype.hasOwnProperty.call(sources, key)) {
-      key && (sources[key] = data[key])
-    }
+    const hasOwnProperty = Object.prototype.hasOwnProperty.call(sources, key)
+    hasOwnProperty && key && (sources[key] = data[key])
   }
 
   return dataSources

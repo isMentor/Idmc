@@ -1,0 +1,36 @@
+###
+ # @Author: tiw
+ # @LastEditors: Please set LastEditors
+ # @Description:  自动化部署脚本
+### 
+
+# 执行过程不为 true 自动退出
+set -e
+
+echo "Enter release version: "
+
+read VERSION
+
+read -p "Releasing $VERSION - are you sure? (y/n)" -m 1 -r
+
+echo # (optional) move to a new line
+
+if [[ $REPLY =~ ^[Yy]$ ]]
+
+then
+
+  echo "Releasing $VERSION ..."
+
+  #commit
+
+  git add -A
+  
+  git commit -m "[build] $VERSION"
+
+  git version $VERSION --message "[release] $VERSION"
+
+  git push origin master
+
+  # publish
+
+  npm publish

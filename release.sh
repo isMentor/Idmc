@@ -16,7 +16,7 @@ then
 
   # commit
   git add -A
-  git commit -m "[build] $VERSION"
+  git commit -m "[dist] $VERSION"
   yarn version $VERSION --message "[release] $VERSION"
   git push origin master
 

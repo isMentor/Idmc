@@ -1,6 +1,6 @@
 {
   "name": "idmc",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "dist/idmc.umd.js",

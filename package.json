@@ -1,6 +1,6 @@
 {
   "name": "idmc",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
   "main": "dist/idmc.umd.js",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "author": "15026864008@163.com",
-  "repository": "",
+  "repository": "https://github.com/tomMentor/Idmc.git",
   "license": "MIT",
   "engines": {
     "node": ">=6.0.0"

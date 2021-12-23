@@ -23,7 +23,7 @@
     "start": "rollup -c rollup.config.ts -w",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "test:prod": "npm run lint && npm run test -- --no-cache",
+    "test:prod": "yarn run lint && yarn run test -- --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
@@ -31,7 +31,7 @@
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
     "travis-deploy-once": "travis-deploy-once",
-    "prepub": "npm run test:prod && npm run build",
+    "prepub": "yarn run test:prod && yarn run build",
     "pub": "sh release.sh"
   },
   "lint-staged": {
@@ -104,6 +104,7 @@
     "css-loader": "^2.1.1",
     "cz-conventional-changelog": "^2.1.0",
     "express": "^4.16.4",
+    "husky": "^7.0.4",
     "jasmine-ajax": "^4.0.0",
     "jasmine-core": "^3.4.0",
     "jest": "^24.8.0",
@@ -148,8 +149,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test",
+      "pre-commit": "yarn test",
+      "pre-push": "yarn test",
       "...": "..."
     }
   }

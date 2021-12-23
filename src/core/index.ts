@@ -61,8 +61,8 @@ class Core {
    * @param {any} key
    */
 
-  public remove(key: any): void {
-    const data = remove(key, this.dataSources)
+  public remove(key: any, param?: CoreParam): void {
+    const data = remove(key, this.dataSources, param)
 
     this.assignment(data)
   }

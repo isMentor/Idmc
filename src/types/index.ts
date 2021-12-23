@@ -27,5 +27,7 @@ export interface SaveFunc {
 
 export interface CoreParam {
   readonly keyTarget?: String
+  readonly key?: String
   readonly defaultKeyTarget?: String
+  
 }

@@ -7,52 +7,44 @@
  */
 
 import Idmc from '../../src/index'
-import { TAG, assert } from '../../src/helpers/util'
-describe('Test Remove 0.0.1 => ', () => {
-  test('Remove Array => ', () => {
-    const array = [
-      { id: 1, name: '李四', age: 18 },
-      { id: 2, name: '张三', age: 28 },
-      { id: 3, name: '王麻', age: 38 },
-      { id: 4, name: '刘二狗', age: 48 }
-    ]
-    const idmc1 = new Idmc(array)
+
+const tom = { name: 'Tom', age: 18, location: 'Earth', status: true, id: 1 }
+const jerry = { name: 'Jerry', age: 16, location: 'Mars', status: true, id: 2 }
+const speike = { name: 'Speike', age: 18, location: 'Earth', status: false, id: 3 }
+
+describe('测试移除数据 0.0.1 => ', () => {
+  test('Remove 多条 => ', () => {
+
+    const idmc1 = new Idmc([tom, jerry, speike ])
     idmc1.remove([1, 2])
-    expect(idmc1.product).toEqual([
-      { id: 3, name: '王麻', age: 38 },
-      { id: 4, name: '刘二狗', age: 48 }
-    ])
+    expect(idmc1.product).toEqual([ speike ])
   })
 
-  test('Remove One => ', () => {
-    const array = [
-      { id: 1, name: '李四', age: 18 },
-      { id: 2, name: '张三', age: 28 },
-      { id: 3, name: '王麻', age: 38 },
-      { id: 4, name: '刘二狗', age: 48 }
-    ]
-    const idmc2 = new Idmc(array)
-    idmc2.remove(4)
-    expect(idmc2.product).toEqual([
-      { id: 1, name: '李四', age: 18 },
-      { id: 2, name: '张三', age: 28 },
-      { id: 3, name: '王麻', age: 38 }
-    ])
+  test('Remove 单条 => ', () => {
+
+    const idmc2 = new Idmc([tom, jerry, speike ])
+    idmc2.remove(3)
+
+    expect(idmc2.product).toEqual([ tom, jerry ])
+
   })
 
   test('Remove 自定义 KEY => ', () => {
-    const array = [
-      { a: 1, name: '李四', age: 18 },
-      { a: 2, name: '张三', age: 28 },
-      { a: 3, name: '王麻', age: 38 },
-      { a: 4, name: '刘二狗', age: 48 }
-    ]
-    const idmc3 = new Idmc(array, { keyTarget: 'age' })
-    idmc3.remove(18)
-    expect(idmc3.product).toStrictEqual([
-      { a: 2, age: 28, name: '张三' },
-      { a: 3, age: 38, name: '王麻' },
-      { a: 4, age: 48, name: '刘二狗' }
-    ])
+    const idmc3 = new Idmc([ tom, jerry, speike ])
+    idmc3.remove('Tom', { key: 'name' })
+    expect(idmc3.product).toStrictEqual([ jerry, speike ])
   })
+
+  test('Remove 自定义 KEY => ', () => {
+    const idmc3 = new Idmc([ tom, jerry, speike ])
+    idmc3.remove(['Tom', 'Speike'], { key: 'name' })
+    expect(idmc3.product).toStrictEqual([ jerry ])
+  })
+
+  test('Remove 自定义 KEY => ', () => {
+    const idmc3 = new Idmc([ tom, jerry, speike ])
+    idmc3.remove(['Tom', 'Speike', 'Jerry'], { key: 'name' })
+    expect(idmc3.product).toStrictEqual([ ])
+  })
+
 })

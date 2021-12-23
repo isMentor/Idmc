@@ -101,17 +101,17 @@ console.log(idmc.product)
 /**
 *  @param data 源数据
 *  @param { }  {} 参数设置
-*  @param { keyTarget } keyTarget 自定义 KEY
+*  @param { key } key 自定义 KEY
 * 
 * */
-const idmc = new Idmc(data, { keyTarget: 'name' })
+const idmc = new Idmc(data)
 
-idmc.remove('Tom') 
+idmc.remove('Tom', { key: 'name' }) 
 
 console.log(idmc.product)
 // [ { name: 'Jerry', age: 16, location: 'Mars', status: true, id: 2 } ]
 
-idmc.remove(['Tom', 'Jerry']) 
+idmc.remove(['Tom', 'Jerry'], { key: 'name' }) 
 
 console.log(idmc.product)
 // [ ]
@@ -140,7 +140,7 @@ idmc.update(tom，{
 })
 
 console.log(idmc.product)
-// [ { name: 'Tom', age: 20, location: 'Earth', status: true, id: 1 } ]
+// [ { name: 'Tom', age: 20, location: 'Earth', status: true, id: 1 }, jerry ]
 
 ```
 

@@ -6,44 +6,23 @@ import { SaveFunc } from '../../src/types'
  * @LastEditors: Please set LastEditors
  * @Description: 新增
  */
+const tom = { name: 'Tom', age: 18, location: 'Earth', status: true, id: 1 }
+const jerry = { name: 'Jerry', age: 16, location: 'Mars', status: true, id: 2 }
+const speike = { name: 'Speike', age: 18, location: 'Earth', status: false, id: 2 }
+describe('测试添加数据 0.0.1 => ', () => {
 
-describe('Test Add 0.0.1 => ', () => {
-  test('123', () => {
-    // console.llg()
-  })
 
-  test('Save One Fn => ', () => {
+  test('添加单条数据 ==================================== ', () => {
     const idmc = new Idmc()
-    idmc.saveOne({ id: 4, name: '张三', age: 18, sex: 1, adder: '上海' })
-    expect(idmc.product).toEqual([{ id: 4, name: '张三', age: 18, sex: 1, adder: '上海' }])
+    idmc.saveOne(tom)
+    expect(idmc.product).toEqual([tom])
   })
 
-  test('Save One Fn On id => ', () => {
-    const idmc = new Idmc()
-    const data = { name: '张三', age: 18, sex: 1, adder: '上海', status: false, open: false }
-    const product = [{ name: '张三', age: 18, sex: 1, adder: '上海', status: false, open: false }]
-    idmc.saveOne(data)
-    expect(idmc.product).toEqual(product)
+
+  test('添加多条数据 ====================================  ', () => {
+    const idmc = new Idmc([tom])
+    idmc.save([jerry, speike])
+    expect(idmc.product).toEqual([tom, jerry, speike])
   })
 
-  test('Save Fn => ', () => {
-    const data = [
-      { id: 4, name: '张三', age: 18, sex: 1, adder: '上海', status: false, open: false }
-    ]
-    const add = [{ name: '李四', age: 18, sex: 1, adder: '北京', status: false, open: false }]
-    const product = [
-      ...data,
-      {
-        name: '李四',
-        age: 18,
-        sex: 1,
-        adder: '北京',
-        status: false,
-        open: false
-      }
-    ]
-    const idmc = new Idmc(data)
-    idmc.save(add)
-    expect(idmc.product).toEqual(product)
-  })
 })

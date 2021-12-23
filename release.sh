@@ -17,9 +17,9 @@ then
   # commit
   git add -A
   git commit -m "[dist] $VERSION"
-  yarn version $VERSION --message "[release] $VERSION"
+  npm version $VERSION --message "[release] $VERSION"
   git push origin master
 
   # publish
-  yarn publish
+  npm publish
 fi

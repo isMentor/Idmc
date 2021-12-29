@@ -4,8 +4,8 @@
  * @Description: Base
  */
 import { KEY_NAME } from '../../global/default'
-import { TAG, assert, headingCodeOne } from '../../helpers/util'
-import { Intruder, Assignment, AssertParam, CoreParam } from '../../types'
+import { TAG } from '../../helpers/util'
+import { Intruder,CoreParam } from '../../types'
 export default (data: Array<Intruder>, parameters: CoreParam): Array<Intruder> => {
   // Default Key
   const keyTarget: String = parameters.keyTarget || KEY_NAME

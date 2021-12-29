@@ -13,6 +13,8 @@ const jerry = { name: 'Jerry', age: 16, location: 'Mars', status: true, id: 2 }
 const speike = { name: 'Speike', age: 18, location: 'Earth', status: false, id: 3 }
 
 describe('测试移除数据 0.0.1 => ', () => {
+
+
   test('Remove 多条 => ', () => {
 
     const idmc1 = new Idmc([tom, jerry, speike ])
@@ -47,4 +49,24 @@ describe('测试移除数据 0.0.1 => ', () => {
     expect(idmc3.product).toStrictEqual([ ])
   })
 
+
+  test('Remove 只删除 key => ', () => {
+    const idmc = new Idmc([ tom, jerry, speike ])
+    idmc.remove('name', { type: 'key' })
+    expect(idmc.product).toStrictEqual([ 
+      {  age: 18, location: 'Earth', status: true, id: 1 },
+      {  age: 16, location: 'Mars', status: true, id: 2 },
+      {  age: 18, location: 'Earth', status: false, id: 3 }
+    ])
+  })
+
+  test('Remove 删除多个 key => ', () => {
+    const idmc = new Idmc([ tom, jerry, speike ])
+    idmc.remove(['name', 'age'], { type: 'key' })
+    expect(idmc.product).toStrictEqual([ 
+      { location: 'Earth', status: true, id: 1 },
+      { location: 'Mars', status: true, id: 2 },
+      { location: 'Earth', status: false, id: 3 }
+    ])
+  })
 })

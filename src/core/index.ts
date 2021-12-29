@@ -3,7 +3,7 @@
  * @LastEditors: Please set LastEditors
  * @Description: 核心入口文件
  */
-import { TAG, assert, headingCodeOne } from '../helpers/util'
+import { assert, headingCodeOne } from '../helpers/util'
 import { KEY_NAME } from '../global/default'
 import { Intruder, Assignment, AssertParam, CoreParam } from '../types'
 import { save, remove, update, query } from './bll'
@@ -22,7 +22,7 @@ class Core {
   public product: Array<Intruder> | Intruder
 
   constructor(source: Array<Intruder>, param: CoreParam) {
-    const data: Array<Intruder> = source || []
+    const data: Array<Intruder> = source
 
     this.dataSources = data
 
@@ -50,9 +50,13 @@ class Core {
    * @param {Object} data 添加的数据
    */
 
-  public saveOne(data: Intruder): void {
-    let product: Array<Intruder> = [...this.dataSources, ...save([data], this.parameters)]
-
+  public saveOne(data: Intruder, param: CoreParam = { index: 0 }): void {
+    let product: Array<Intruder> = []
+    if (param.index === 1) {
+      product = [...this.dataSources, ...save([data], this.parameters)]
+    } else {
+      product = [...save([data], this.parameters), ...this.dataSources]
+    }
     this.assignment(product)
   }
 
@@ -90,7 +94,7 @@ class Core {
 
   public find(data: any): void {
     const sources = query(this.dataSources, data)
-    this.assignment(sources, { sources: false })
+    this.assignment(sources)
   }
 
   /**
@@ -101,7 +105,7 @@ class Core {
 
   public findOne(data: Object, index: Number = 0): void {
     const sources: Array<Intruder> = query(this.dataSources, data)
-    this.assignment(sources[`${index}`], { sources: false })
+    this.assignment(sources[`${index}`])
   }
 
   /**
@@ -109,9 +113,7 @@ class Core {
    * @param {Array} data
    */
 
-  private assignment(data: Array<Intruder>, config?: Assignment) {
-    const { sources } = config || {}
-    if (sources) this.dataSources = data
+  private assignment(data: Array<Intruder>) {
     this.product = data && this.clearKey(data)
   }
 

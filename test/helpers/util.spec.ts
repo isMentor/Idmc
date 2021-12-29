@@ -3,8 +3,11 @@
  * @LastEditors: Please set LastEditors
  * @Description:
  */
-import { TAG, headingCode, assert, headingCodeOne } from '../../src/helpers/util'
+import { TAG, headingCode, assert, headingCodeOne, removeKey } from '../../src/helpers/util'
 
+const tom = { name: 'Tom', age: 18, location: 'Earth', status: true, id: 1 }
+const jerry = { name: 'Jerry', age: 16, location: 'Mars', status: true, id: 2 }
+const speike = { name: 'Speike', age: 18, location: 'Earth', status: false, id: 3 }
 describe('Test Util File => 0.0.1', () => {
   test('Test is for true', () => {
     // 测试是否有值
@@ -33,5 +36,21 @@ describe('Test Util File => 0.0.1', () => {
       const arr = assert()
       expect(arr).toEqual({ array: false, none: true })
     })
+    
   })
+
+  test('Remove Key => ', () => {
+    const arr = removeKey('name', [tom, jerry])
+    expect(arr).toEqual([
+      { age: 18, location: 'Earth', status: true, id: 1 },
+      { age: 16, location: 'Mars', status: true, id: 2 }
+    ])
+  })
+
+
+  test('Remove Key => ', () => {
+    const arr = removeKey('', [tom])
+    expect(arr).toEqual([tom])
+  })
+
 })

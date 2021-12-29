@@ -23,9 +23,11 @@ export const TAG = (index?: Number | String): String =>
  */
 export const headingCode = (dataSource: Array<any>, param: CoreParam = {}): Array<any> => {
   return dataSource.map((item: any, i: Number) => {
-    !item[KEY_NAME] &&
-      (item[KEY_NAME] = item[`${param.keyTarget}`] || item.id || item.key || TAG(i))
-
+    if (!item[KEY_NAME]) {
+      item[KEY_NAME] = item[`${param.keyTarget}`] || item.id || item.key || TAG(i)
+    } else {
+      // ... 
+    }
     return item
   })
 }
@@ -37,7 +39,11 @@ export const headingCode = (dataSource: Array<any>, param: CoreParam = {}): Arra
  */
 export const headingCodeOne = (source: Intruder): Intruder => {
   const updateData = { ...source }
-  !updateData[KEY_NAME] && (updateData[KEY_NAME] = source.id || source.key)
+   if (!updateData[KEY_NAME]) {
+    updateData[KEY_NAME] = source.id || source.key
+   } else {
+    //  ...
+   }
   return updateData
 }
 
@@ -52,4 +58,35 @@ export const assert = <T>(data?: T): AssertParam => {
     array: type === '[object Array]',
     none: !data
   }
+}
+
+/**
+ * @description: Remove Key
+ * @param {any} tag
+ * @param {Array} dataSources
+ * @return {*}
+ */
+ export const removeKey = (tag: any, dataSources: Array<Intruder>): Array<Intruder> => {
+  return dataSources.map((item: Intruder) => {
+    for (const key in item) {
+      const hasOwnPropertyCall = key && Object.prototype && Object.prototype.hasOwnProperty && Object.prototype.hasOwnProperty.call
+      if (hasOwnPropertyCall && Object.prototype.hasOwnProperty.call(item, key)) {
+        try {
+            const keys = Object.keys(item)
+            keys.map(keysItem => {
+              if (tag && tag.length > 0 && keysItem && tag.includes(keysItem)) {
+                delete item[`${keysItem}`]
+              } else {
+                // ...
+              }
+            })
+        } catch (error) {
+          // ...
+        }
+      } else {
+        //     // ...
+      }
+    }
+    return item
+  })
 }

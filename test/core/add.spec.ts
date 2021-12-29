@@ -13,9 +13,15 @@ describe('测试添加数据 0.0.1 => ', () => {
 
 
   test('添加单条数据 ==================================== ', () => {
-    const idmc = new Idmc()
+    const idmc = new Idmc([ jerry ])
     idmc.saveOne(tom)
-    expect(idmc.product).toEqual([tom])
+    expect(idmc.product).toEqual([tom, jerry])
+  })
+
+  test('添加单条数据,添加到前面 ==================================== ', () => {
+    const idmc = new Idmc([tom, speike])
+    idmc.saveOne(jerry, { index: 1 })
+    expect(idmc.product).toEqual([tom, speike, jerry])
   })
 
 

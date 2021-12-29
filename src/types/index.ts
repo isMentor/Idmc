@@ -6,6 +6,8 @@
 
 export type DefaultKeyTarget = '__key__'
 
+type Index = 0 | 1
+
 export interface AssertParam {
   array: Boolean
   none: Boolean
@@ -29,5 +31,7 @@ export interface CoreParam {
   readonly keyTarget?: String
   readonly key?: String
   readonly defaultKeyTarget?: String
+  readonly index?: Index
+  readonly type?: String
   
 }

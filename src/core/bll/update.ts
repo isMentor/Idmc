@@ -10,13 +10,10 @@ export default (
   data: Intruder
 ): Array<Intruder> => {
   const dataSources = [...sourcesData]
-
   const sources = dataSources.find((item: any) => item.__key__ === target.__key__)
-
   for (const key in sources) {
     const hasOwnProperty = Object.prototype.hasOwnProperty.call(sources, key)
     hasOwnProperty && key && (sources[key] = data[key])
   }
-
   return dataSources
 }
